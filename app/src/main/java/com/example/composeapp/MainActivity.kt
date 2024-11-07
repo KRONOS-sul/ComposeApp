@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -51,6 +52,7 @@ class MainActivity : ComponentActivity() {
                             " efficiency tricks, like Android Studio hotkeys, to make my workflow smoother."
                 )
                 Interest()
+                Friends()
             }
         }
     }
@@ -150,6 +152,34 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    @Composable
+    fun Friends() {
+        val pictures = listOf(R.drawable.img1, R.drawable.img2, R.drawable.img3)
+        Spacer(modifier = Modifier.height(16.dp))
+        Column(verticalArrangement = Arrangement.SpaceEvenly) {
+            Text(
+                text = "Friends",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Medium,
+                modifier = Modifier.padding(0.dp, 8.dp)
+            )
+        }
+        LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            items(pictures.size) {
+                Image(
+                    painter = painterResource(pictures[it]),
+                    contentDescription = "Profile picture",
+                    modifier = Modifier
+                        .size(60.dp)
+                        .clip(CircleShape)
+                        .border(1.dp, color = Color.Gray, CircleShape)
+                )
+            }
+        }
+    }
+
     @Preview(showBackground = true)
     @Composable
     fun DesignPreview() {
@@ -167,6 +197,7 @@ class MainActivity : ComponentActivity() {
                         " efficiency tricks, like Android Studio hotkeys, to make my workflow smoother."
             )
             Interest()
+            Friends()
         }
     }
 }
