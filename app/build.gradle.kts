@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("plugin.serialization") version "2.0.21"
 }
 
 android {
@@ -40,6 +41,12 @@ android {
 }
 
 dependencies {
+
+    //Serialization https://kotlinlang.org/docs/serialization.html#formats
+    implementation(libs.kotlinx.serialization.json)
+
+    //Compose Nav https://developer.android.com/develop/ui/compose/navigation
+    implementation(libs.androidx.navigation.compose)
 
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.core.ktx)
